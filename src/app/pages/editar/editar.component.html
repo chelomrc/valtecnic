@@ -1,0 +1,172 @@
+<div class="container">
+
+    <div class="container bg-dark">
+        <h2 class="text-white p-2" style="text-align: center">
+            Datos de la Reserva
+        </h2>
+
+        <hr class="my-4 ">
+
+    </div>
+
+
+    <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+        <div class="row  ">
+            <div class="col text-left">
+                <button type="submit" class="btn btn-primary btn-lg">
+                    <i class="fa fa-save">  </i>
+                         Guardar Cambios
+                </button>
+
+            </div>
+            <div class=" col  text-right">
+                <button class="btn btn-info btn-lg" [routerLink]="['/reservas' ]">
+                  <i class="fa fa-arrow-left"></i>
+                  Regresar
+                </button>
+
+            </div>
+        </div>
+        <br>
+
+
+
+        <div class="container">
+
+            <div class="form-group">
+                <label>Estado:</label>
+                <br>
+                <button *ngIf="reserva.estado" (click)="reserva.estado = false" class="btn btn-lg btn-success w-50" type="button">
+                  <i class="fa fa-check-circle"></i>
+                  ATENDIDO
+                </button>
+
+                <button *ngIf="!reserva.estado" (click)="reserva.estado = true" class="btn btn-lg btn-danger w-50" type="button">
+                  <i class="fa fa-question-circle"></i>
+                  PENDIENTE
+                </button>
+            </div>
+
+            <div class="row">
+                <div class="form-group col">
+                    <label>Fecha de la reserva</label>
+                    <input type="text" class="form-control" [(ngModel)]="reserva.fechaReserva" name="nombreCompleto" disabled="disabled">
+                    <small class="form-text text-muted">Este campo no se puede editar </small>
+                </div>
+
+                <div class="form-group col">
+                    <label>Cantidad de avaluos</label>
+                    <input type="text" class="form-control" placeholder="" [(ngModel)]="reserva.cantidadAvaluos" name="cantidadavaluos">
+                </div>
+
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label>Nombre/Razon Social</label>
+                    <input type="text" class="form-control" [(ngModel)]="reserva.razonSocial" name="razonSocial" placeholder="Nombre/Razon Social">
+                </div>
+                <div class="form-group col">
+                    <label>N.I.T/CI</label>
+                    <input type="text" class="form-control" [(ngModel)]="reserva.nit" name="nit" placeholder="N.I.T/CI">
+                </div>
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label>Telefono Fijo</label>
+                    <input type="text" class="form-control" [(ngModel)]="reserva.telefono" name="telefono" placeholder="Telefono">
+                </div>
+                <div class="form-group col">
+                    <label>Numero de Celular</label>
+                    <input type="text" class="form-control" [(ngModel)]="reserva.celular" name="celular" placeholder="Celular">
+                </div>
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label>Oficial de Credito</label>
+                    <input type="text" class="form-control" [(ngModel)]="reserva.oficial" name="usuario" disabled="disabled">
+                    <small class="form-text text-muted">Este campo no se puede editar </small>
+                </div>
+                <div class="form-group col">
+                    <label>Banco Solicitante</label>
+                    <input type="text" class="form-control" [(ngModel)]="reserva.banco" name="banco" disabled="disabled">
+                    <small class="form-text text-muted">Este campo no se puede editar </small>
+                </div>
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label for="tipo_de_avaluo">Avaluo de: </label>
+                    <!-- <select class="form-control" [(ngModel)]="reserva.tipoAvaluo" name="tipo_de_avaluo" id="tipo_de_avaluo" required> -->
+                    <select class="form-control" [(ngModel)]="reserva.tipoAvaluo" name="tipoAvaluo" required>
+                        <option value="inmueble">Inmueble</option>
+                        <option value="propiedad horizontal">Propiedad Horizontal</option>
+                        <option value="terreno">Terreno</option>
+                    </select>
+
+                </div>
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label>Fecha Disponibilidad Cliente</label>
+                    <input type="text" placeholder="Seleccione Fecha" name="fechaCliente" class="form-control" bsDatepicker [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', containerClass:'theme-dark-blue', adaptivePosition: true}" [(ngModel)]="reserva.fechaCliente" autocomplete="off">
+
+
+                </div>
+                <div class="form-group col">
+                    <label>Hora Disponibilidad Cliente</label>
+                    <select class="form-control" [(ngModel)]="reserva.horaCliente" name="horaCliente" id="horaCliente" required>
+                      <option value="08:00">08:00 AM</option>
+                      <option value="08:30">08:30 AM</option>
+                      <option value="09:00">09:00 AM</option>
+                      <option value="09:30">09:30 AM</option>
+                      <option value="10:00">10:00 AM</option>
+                      <option value="10:30">10:30 AM</option>
+                      <option value="11:00">11:00 AM</option>
+                      <option value="11:30">11:30 AM</option>
+                      <option value="12:00">12:00 PM</option>
+                      <option value="12:30">12:30 PM</option>
+                      <option value="01:00">01:00 PM</option>
+                      <option value="01:30">01:30 PM</option>
+                      <option value="02:00">02:00 PM</option>
+                      <option value="02:30">02:30 PM</option>
+                      <option value="03:00">03:00 PM</option>
+                      <option value="03:30">03:30 PM</option>
+                      <option value="04:00">04:00 PM</option>
+                      <option value="04:30">04:30 PM</option>
+                      <option value="05:00">05:00 PM</option>
+                      <option value="05:30">05:30 PM</option>
+                      <option value="06:00">06:00 PM</option>
+                      <option value="06:30">06:30 PM</option>
+                      <option value="07:00">07:00 PM</option>
+                      <option value="07:30">07:30 PM</option>
+
+                  </select>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group col">
+
+            <h3>Ubicación en el Mapa</h3>
+
+        </div>
+
+        <div class="form-group col">
+            <label>Dirección:</label>
+            <input type="text" class="form-control" [(ngModel)]="reserva.direccion" name="direccion" placeholder="Introduzca la dirección">
+        </div>
+
+        <agm-map [latitude]="reserva.latitud" [longitude]="reserva.longitud" [zoom]=15>
+            <agm-marker [latitude]="reserva.latitud" [longitude]="reserva.longitud" required></agm-marker>
+        </agm-map>
+        <br>
+
+
+
+
+    </form>
+
+</div>

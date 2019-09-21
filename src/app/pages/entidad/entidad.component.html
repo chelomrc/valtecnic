@@ -1,0 +1,61 @@
+<div class="container">
+
+    <h1>
+        Oficial de Crédito <small>Información</small> </h1>
+    <hr>
+
+
+    <div class="row text-right">
+        <div class="col">
+            <button class="btn btn-info" routerLink="/entidades">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+        </div>
+    </div>
+
+
+
+
+
+    <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+        <div class="container animated fadeIn faster">
+            <div class="row">
+                <div class="form-group col" style="display: none">
+                    <label>Usuario ID</label>
+                    <input type="text" class="form-control" placeholder="Usuario ID" [(ngModel)]="entidad.id" name="id" disabled="disabled">
+                    <small class="form-text text-muted">Este campo es autogenerado</small>
+                </div>
+
+
+                <div class="form-group col">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" placeholder="Ingrese  el Nombre" [(ngModel)]="entidad.nombre" name="nombre" required>
+                </div>
+                <div class="form-group col">
+                    <label>Teléfono</label>
+                    <input type="text" class="form-control" [(ngModel)]="entidad.telefono" name="telefono" placeholder="Ingrese  el Teléfono">
+                </div>
+
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label>Dirección</label>
+                    <input type="text" class="form-control" placeholder="Ingrese la Dirección" [(ngModel)]="entidad.direccion" name="direccion">
+                </div>
+
+                <div class="w-100"></div>
+
+                <hr>
+                <div class="form-group col text-center">
+                    <button type="submit" class="btn btn-lg btn-primary w-25">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

@@ -1,0 +1,91 @@
+<div class="container">
+
+    <div class="container bg-dark">
+        <h2 class="text-white p-2" style="text-align: center">
+            Listado de Entidades Bancarias
+        </h2>
+
+        <hr class="my-4 ">
+
+    </div>
+
+
+    <div class="row">
+        <div class="col text-left">
+            <button routerLink="/oficial/nuevo" class="btn btn-success">
+      <i class="fa fa-plus-circle"></i>
+      Agregar Oficial
+    </button>
+        </div>
+
+        <div class="col text-right " style="padding-bottom: 1%">
+            <button routerLink="/panel" class="btn btn-info">
+      <i class="fa fa-arrow-circle-left"></i>
+      Regresar Panel
+    </button>
+        </div>
+    </div>
+
+
+
+
+    <table *ngIf="!cargando && oficiales.length > 0" class="table mt-3 animated fadeIn faster animated fadeIn faster">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Entidad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Herramientas</th>
+                <!-- <th scope="col">Fecha Registro</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let oficial of oficiales; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ oficial.nombre}} {{oficial.apellido}}</td>
+                <td>{{ oficial.telefono }}</td>
+                <td>{{ oficial.banco }}</td>
+                <td>
+
+                    <label *ngIf="oficial.estado" class="badge badge-success">Activo</label>
+                    <label *ngIf="!oficial.estado" class="badge badge-danger">Inactivo</label>
+
+                </td>
+                <td align="center">
+
+                    <!-- <button class="btn btn-info mr-1" [routerLink]="['/registrar', oficial.id ]">
+          <i class="fa fa-pen"></i>
+        </button> -->
+                    <button class="btn btn-info mr-1" [routerLink]="['/oficial', oficial.id ]">
+          <i class="fa fa-pen"></i>
+        </button>
+
+                    <button class="btn btn-danger" (click)="borrarOficial( oficial, i ) ">
+          <i class="fa fa-trash"></i>
+        </button>
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div *ngIf="!cargando && oficiales.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>

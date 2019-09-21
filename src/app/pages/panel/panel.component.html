@@ -1,0 +1,50 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="container bg-dark">
+                <h2 class="text-white p-2" style="text-align: center">
+                    Panel de Control
+                </h2>
+                <h1 class="text-white " style="text-align: center">
+                    VALTECNIC
+                </h1>
+                <hr class="my-4 ">
+
+            </div>
+            <div *ngIf="!cargando " class="row animated fadeIn faster animated fadeIn faster ">
+                <div class="col-md-6 mx-auto">
+
+                    <!-- <button type="button " class="btn btn-md btn-block btn-secondary btn-md " [routerLink]="[ '/editarperfil', oficial.id ] ">
+                      Cambiar Contraseña
+                    </button> -->
+                    <button type="button " class="btn btn-block btn-primary btn-lg " [routerLink]="[ '/reservas' ] ">
+                      Ver Reservas
+                    </button>
+                    <button type="button " class="btn btn-block btn-info btn-lg " [routerLink]="[ '/entidades' ] ">
+                      Entidades Bancarias
+                    </button>
+                    <button type="button " class="btn btn-block btn-success btn-lg " [routerLink]="[ '/oficiales' ] ">
+                      Oficiales de Crédito
+                    </button>
+                </div>
+                <!-- <div class="col-md-4 ">
+                    <img class="img-fluid " alt="Responsive image " src="http://avaluosparametro.com/templates/frontend/img/img3.jpg " />
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="cargando " class="alert alert-info text-center mt-3 animated fadeIn faster ">
+    <h4 class="alert-heading ">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x "></i>
+    </p>
+    <p class="mb-0 ">
+        Espere por favor
+    </p>
+</div>
+
+<br>
+<br>

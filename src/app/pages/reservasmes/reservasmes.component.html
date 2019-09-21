@@ -1,0 +1,247 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+
+            <div class="container bg-dark">
+                <h2 class="text-white p-2 ">
+                    Bienvenido!
+                </h2>
+                <h1 class="text-white ">
+                    <!-- {{oficial.nombre}} {{oficial.apellido}} -->
+                </h1>
+                <hr class="my-4 ">
+
+            </div>
+
+            <div *ngIf="!cargando " class="row animated fadeIn faster animated fadeIn faster ">
+                <div class="col-md-3 ">
+                    <!-- <div class="page-header ">
+                        <h1 align="center ">
+                            opcio <small></small>
+                        </h1>
+                    </div> -->
+                    <!-- <h3 class="text-left ">
+                        h3. Lorem ipsum dolor sit amet.
+                    </h3> -->
+                    <button type="button " class="btn btn-md btn-block btn-secondary btn-md " [routerLink]="[ '/editarperfil', id ] ">
+              Editar Perfil
+            </button>
+                    <button type="button " class="btn btn-block btn-primary btn-lg " [routerLink]="[ '/reserva', id ] ">
+              Agregar Reserva
+            </button>
+                    <button type="button " class="btn btn-block btn-info btn-lg " [routerLink]="[ '/reservas', id ] ">
+              Mis Reservas
+            </button>
+                </div>
+
+                <!-- ***** Lista de Reservas **** -->
+
+                <div *ngIf="!mostrarReserva" class="col-md-9">
+
+                    <div *ngIf="!cargando" class="row">
+                        <h5>Mes Actual: {{fecha | date: 'MMMM' }}</h5>
+
+                        <div class="col text-right">
+                            <button class="btn btn-success" [routerLink]="['/registrar', id ]">
+                              <i class="fa fa-arrow-left"></i>
+                              Regresar
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col text-left">
+                            <button (click)="mesAnterior()" class="btn btn-primary">
+                          <i class="fa fa-arrow-circle-left"></i>
+                          Mes Anterior
+                        </button>
+                            <button (click)="mesSiguiente()" class="btn btn-primary">
+                          <i class="fa fa-arrow-circle-right"></i>
+                          Mes Siguiente
+                        </button>
+                        </div>
+                    </div>
+
+
+                    <table *ngIf="!cargando && reservasMes.length > 0" class="table mt-3 animated fadeIn faster animated fadeIn faster">
+
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Razon Social</th>
+                                <th scope="col">Fecha Reserva</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Herramientas</th>
+                                <!-- <th scope="col">Fecha Registro</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let reserva of reservasMes; let i = index">
+                                <th scope="row">{{ i + 1 }}</th>
+                                <td>{{ reserva.razonSocial}} </td>
+                                <td>{{ reserva.fechaReserva}} </td>
+                                <td>
+
+                                    <label *ngIf="reserva.estado" class="badge badge-success">Atendido</label>
+                                    <label *ngIf="!reserva.estado" class="badge badge-danger">Pendiente</label>
+
+                                </td>
+                                <td align="center">
+
+                                    <button class="btn btn-info mr-1" (click)="verReserva( i )">
+                              <i class="fa fa-eye"></i> Ver
+                            </button>
+                                    <!-- <button class="btn btn-info mr-1" [routerLink]="['/oficial', oficial.id ]">
+                              <i class="fa fa-pen"></i>
+                            </button> -->
+
+                                    <!-- <button class="btn btn-danger" (click)="borrarReserva( reserva, i ) ">
+                              <i class="fa fa-trash"></i>
+                              </button> -->
+
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div *ngIf="!cargando && reservasMes.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+                        <h4 class="alert-heading">No hay registros</h4>
+                        <p>
+                            <i class="fa fa-exclamation fa-2x"></i>
+                        </p>
+                    </div>
+
+                    <div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+                        <h4 class="alert-heading">Cargando</h4>
+                        <p>
+                            <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+                        </p>
+                        <p class="mb-0">
+                            Espere por favor
+                        </p>
+                    </div>
+                </div>
+
+                <!-- ***** Fin Lista de Reservas **** -->
+
+
+                <!-- ***** Mostrar Reserva **** -->
+                <div *ngIf="mostrarReserva" class="col-md-9 border border-danger rounded p-2">
+
+                    <div class="row text-right">
+                        <div class="col">
+                            <button class="btn btn-success" [routerLink]="['/registrar', id ]">
+                          <i class="fa fa-arrow-left"></i>
+                          Regresar
+                        </button>
+                        </div>
+                    </div>
+
+                    <h3 class="display-4" align="center">
+                        Información Reserva
+                    </h3>
+                    <hr>
+                    <form>
+                        <div class="container">
+                            <div class="row">
+                                <div class="form-group col">
+                                    <label>Fecha de la reserva</label>
+                                    <input type="text" class="form-control" [(ngModel)]="reserva.fechaReserva" name="nombreCompleto" disabled="disabled">
+                                    <small class="form-text text-muted">Este campo no se puede editar </small>
+                                </div>
+
+                                <div class="form-group col">
+                                    <label>Cantidad de avaluos</label>
+                                    <input type="text" class="form-control" placeholder="" [(ngModel)]="reserva.cantidadAvaluos" name="cantidadavaluos" disabled="disabled">
+                                </div>
+
+                                <div class="w-100"></div>
+
+                                <div class="form-group col">
+                                    <label>Nombre/Razon Social</label>
+                                    <input type="text" class="form-control" [(ngModel)]="reserva.razonSocial" name="razonSocial" placeholder="Nombre/Razon Social" disabled="disabled">
+                                </div>
+                                <div class="form-group col">
+                                    <label>N.I.T/CI</label>
+                                    <input type="text" class="form-control" [(ngModel)]="reserva.nit" name="nit" placeholder="N.I.T/CI" disabled="disabled">
+                                </div>
+                                <div class="w-100"></div>
+
+                                <div class="form-group col">
+                                    <label>Telefono Fijo</label>
+                                    <input type="text" class="form-control" [(ngModel)]="reserva.telefono" name="telefono" placeholder="Telefono" disabled="disabled">
+                                </div>
+                                <div class="form-group col">
+                                    <label>Numero de Celular</label>
+                                    <input type="text" class="form-control" [(ngModel)]="reserva.celular" name="celular" placeholder="Celular" disabled="disabled">
+                                </div>
+                                <div class="w-100"></div>
+
+                                <div class="form-group col">
+                                    <label>Oficial de Credito</label>
+                                    <input type="text" class="form-control" [(ngModel)]="reserva.oficial" name="usuario" disabled="disabled">
+                                    <small class="form-text text-muted">Este campo no se puede editar </small>
+                                </div>
+                                <div class="form-group col">
+                                    <label>Banco Solicitante</label>
+                                    <input type="text" class="form-control" [(ngModel)]="reserva.banco" name="banco" disabled="disabled">
+                                    <small class="form-text text-muted">Este campo no se puede editar </small>
+                                </div>
+                                <div class="w-100"></div>
+
+                                <div class="form-group col">
+                                    <label for="tipo_de_avaluo">Avaluo de: </label>
+                                    <!-- <select class="form-control" [(ngModel)]="reserva.tipoAvaluo" name="tipo_de_avaluo" id="tipo_de_avaluo" required> -->
+                                    <input class="form-control" [(ngModel)]="reserva.tipoAvaluo" name="tipoAvaluo" required disabled="disabled">
+                                </div>
+                                <div class="w-100"></div>
+
+                                <div class="form-group col">
+                                    <label>Fecha Disponibilidad Cliente</label>
+                                    <input type="text" placeholder="Seleccione Fecha" name="fechaCliente" class="form-control" bsDatepicker [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', containerClass:'theme-dark-blue', adaptivePosition: true}" [(ngModel)]="reserva.fechaCliente" autocomplete="off"
+                                        disabled="disabled">
+
+
+                                </div>
+                                <div class="form-group col">
+                                    <label>Hora Disponibilidad Cliente</label>
+                                    <input class="form-control" [(ngModel)]="reserva.horaCliente" name="horaCliente" id="horaCliente" required disabled="disabled">
+
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <h3>Ubicación en el Mapa</h3>
+
+                        <agm-map [latitude]="reserva.latitud" [longitude]="reserva.longitud" [zoom]=15>
+                            <agm-marker [latitude]="reserva.latitud" [longitude]="reserva.longitud" required></agm-marker>
+                        </agm-map>
+                        <br>
+
+                    </form>
+
+                </div>
+
+                <!-- ***** Fin Mostrar Reserva **** -->
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="cargando " class="alert alert-info text-center mt-3 animated fadeIn faster ">
+    <h4 class="alert-heading ">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x "></i>
+    </p>
+    <p class="mb-0 ">
+        Espere por favor
+    </p>
+</div>
+
+<br>
+<br>

@@ -1,0 +1,87 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="container bg-dark">
+                <h2 class="text-white p-2 ">
+                    Bienvenido!
+                </h2>
+                <h1 class="text-white ">
+                    {{oficial.nombre}} {{oficial.apellido}}
+                </h1>
+                <hr class="my-4 ">
+
+            </div>
+            <div *ngIf="!cargando " class="row animated fadeIn faster animated fadeIn faster ">
+                <div class="col-md-3 ">
+                    <!-- <div class="page-header ">
+                        <h1 align="center ">
+                            opcio <small></small>
+                        </h1>
+                    </div> -->
+                    <!-- <h3 class="text-left ">
+                        h3. Lorem ipsum dolor sit amet.
+                    </h3> -->
+                    <button type="button " class="btn btn-md btn-block btn-secondary btn-md " [routerLink]="[ '/editarperfil', oficial.id ] ">
+              Editar Perfil
+            </button>
+                    <button type="button " class="btn btn-block btn-primary btn-lg " [routerLink]="[ '/reserva', oficial.id ] ">
+              Agregar Reserva
+            </button>
+                    <button type="button " class="btn btn-block btn-info btn-lg " (click)="misReservas()">
+              Mis Reservas
+            </button>
+                </div>
+                <div class="col-md-4 ">
+                    <img class="img-fluid " alt="Responsive image " src="../../../assets/img/img3.jpg" />
+                </div>
+                <div class="col-md-5 border border-danger rounded p-2 ">
+                    <h2>
+                        Oficial de Crédito:
+                    </h2>
+                    <h3 class="display-4 ">
+                        {{oficial.nombre}} {{oficial.apellido}}
+                    </h3>
+                    <hr>
+
+                    <div class="container ">
+                        <div class="row ">
+                            <div class="col ">
+                                <dt>Telefono</dt>
+                                <dd>{{oficial.telefono}}</dd>
+                            </div>
+                            <div class="col ">
+                                <dt>Correo Electronico
+                                  </dt>
+                                <dd>{{oficial.email}}</dd>
+                            </div>
+                            <div class="w-100 "></div>
+
+                            <div class="col ">
+                                <dt>Entidad Bancaria</dt>
+                                <dd>{{oficial.banco}}</dd>
+                            </div>
+                            <div class="col ">
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="cargando " class="alert alert-info text-center mt-3 animated fadeIn faster ">
+    <h4 class="alert-heading ">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x "></i>
+    </p>
+    <p class="mb-0 ">
+        Espere por favor
+    </p>
+</div>
+
+<br>
+<br>

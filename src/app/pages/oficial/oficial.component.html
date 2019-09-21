@@ -1,0 +1,115 @@
+<div class="container">
+    <div class="container bg-dark">
+        <h2 class="text-white p-2" style="text-align: center">
+            Oficial de Crédito
+        </h2>
+
+        <hr class="my-4 ">
+
+    </div>
+
+
+
+    <div class="row text-right">
+        <div class="col">
+            <button class="btn btn-danger" routerLink="/oficiales">
+      <i class="fa fa-arrow-left"></i>
+      Regresar
+    </button>
+        </div>
+    </div>
+
+
+
+
+
+    <form (ngSubmit)="guardar( f )" #f="ngForm">
+
+        <div class="container animated fadeIn faster">
+            <div class="row">
+                <div class="form-group col" style="display: none">
+                    <label>Usuario ID</label>
+                    <input type="text" class="form-control" placeholder="Usuario ID" [(ngModel)]="oficial.id" name="id" disabled="disabled">
+                    <small class="form-text text-muted">Este campo es autogenerado</small>
+                </div>
+
+
+                <div class="form-group col">
+                    <label>Nombre</label>
+                    <input type="text" class="form-control" placeholder="Ingrese  el Nombre" [(ngModel)]="oficial.nombre" name="nombre" required>
+                </div>
+                <div class="form-group col">
+                    <label>Apellido</label>
+                    <input type="text" class="form-control" [(ngModel)]="oficial.apellido" name="apellido" placeholder="Ingrese  el Apellido">
+                </div>
+
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label>Usuario</label>
+                    <input type="text" class="form-control" [(ngModel)]="oficial.usuario" name="usuario" placeholder="Nombre de Usuario">
+                </div>
+                <div class="form-group col">
+                    <label>Contraseña</label>
+                    <input type="text" class="form-control" [(ngModel)]="oficial.contrasena" name="contrasena" placeholder="Ingrese la Contraseña">
+                </div>
+
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label>Correo Electrónico</label>
+                    <input type="text" class="form-control" [(ngModel)]="oficial.email" name="email" placeholder="Ingrese su email">
+                </div>
+                <div class="form-group col">
+                    <label>Teléfono</label>
+                    <input type="text" class="form-control" [(ngModel)]="oficial.telefono" name="telefono" placeholder="Ingrese  el Teléfono de Contacto">
+                </div>
+
+                <div class="w-100"></div>
+
+                <div class="form-group col">
+                    <label>Entidad Bancaria</label>
+                    <!--<input type="text" class="form-control" [(ngModel)]="oficial.banco" name="banco" placeholder="Entidad Bancaria"> -->
+
+                    <select class="browser-default custom-select">
+                        <option selected>Seleccione un Banco</option>
+                        <option *ngFor="let entidad of entidades"  value="1"> {{entidad.nombre}} </option>
+                      </select>
+
+                </div>
+                <div class="form-group col">
+                    <label>Fecha de Registro</label>
+                    <input type="text" class="form-control" [(ngModel)]="oficial.fechaRegistro" name="fechaRegistro" placeholder="Fecha de Registro" disabled="disabled">
+                </div>
+
+                <div class="w-100"></div>
+
+                <!-- <div class="form-group col">
+                    <label>Estado</label>
+                    <br>
+
+                    <button *ngIf="oficial.estado" (click)="oficial.estado = false" class="btn btn-outline-success w-50" type="button">
+                      <i class="fa fa-smile-wink"></i>
+                      Activo
+                    </button>
+
+                    <button *ngIf="!oficial.estado" (click)="oficial.estado = true" class="btn btn-outline-danger w-50" type="button">
+                        <i class="fa fa-dizzy"></i>
+                        Inactivo
+                    </button>
+                </div> -->
+
+                <div class="w-100"></div>
+
+                <hr>
+                <div class="form-group col text-center">
+                    <button type="submit" class="btn btn-lg btn-primary w-25">
+                    <i class="fa fa-save"></i>
+                    Guardar
+                </button>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

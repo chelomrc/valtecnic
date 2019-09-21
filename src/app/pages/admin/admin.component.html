@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+
+            <div class="modal-body text-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <!-- Portfolio Modal - Title -->
+                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0">Inicia Sesión</h2>
+                            <!-- Icon Divider -->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+                            <!-- Formulario Login -->
+
+                            <div (keyup)="enter($event)">
+
+                                <label class="h2 " for="usuario">USUARIO: </label>
+                                <input class="form-control " [(ngModel)]="usuario" id="usuario" type="text" placeholder="Intruduce tu Usuario" required="required" data-validation-required-message="Please enter your name.">
+                                <br>
+                                <label class="h2" for="password">CONTRASEÑA: </label>
+                                <input class="form-control" type="password" [(ngModel)]="password" id="password" type="password" placeholder="Intruduce tu Contraseña" required="required" data-validation-required-message="Please enter your name.">
+                                <br>
+
+                            </div>
+
+
+
+                            <!-- Portfolio Modal - Text -->
+
+                            <button (click)="login()" class="btn btn-primary btn-lg" href="#" data-dismiss="modal">
+                          <i class="fas fa-check-circle fa-fw"></i>
+                          INGRESAR
+                          </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

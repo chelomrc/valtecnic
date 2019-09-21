@@ -1,0 +1,156 @@
+<div class="container">
+    <div class="container bg-dark">
+        <h2 class="text-white p-2" style="text-align: center">
+            Reservas Programadas
+        </h2>
+
+        <hr class="my-4 ">
+
+    </div>
+    <div *ngIf="!cargando" class="row">
+        <h5 style="margin-left: 5%">Mes Actual: {{fecha | date: 'MMMM' }}</h5>
+
+        <div class="col text-right " style="padding-bottom: 1%">
+            <button routerLink="/panel" class="btn btn-info">
+        <i class="fa fa-arrow-circle-left"></i>
+        Regresar Panel
+      </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-left">
+            <button (click)="mesAnterior()" class="btn btn-primary">
+              <i class="fa fa-arrow-circle-left"></i>
+              Mes Anterior
+            </button>
+            <button (click)="mesSiguiente()" class="btn btn-primary">
+              <i class="fa fa-arrow-circle-right"></i>
+              Mes Siguiente
+            </button>
+        </div>
+        <div class="col text-center">
+            <button class="btn btn-dark btn-md" data-target="#EntidadesModal" data-toggle="modal">
+              <i class="fa fa-list"></i>
+              Filtrar Banco
+            </button>
+        </div>
+        <div class="col text-right">
+            <button (click)="filtrarEstado( true )" class="btn btn-success">
+              <i class="fa fa-check-circle"></i>
+              Atendidos
+            </button>
+            <button (click)="filtrarEstado( false )" class="btn btn-danger">
+              <i class="fa fa-question-circle"></i>
+              Pendientes
+            </button>
+        </div>
+    </div>
+
+
+    <table *ngIf="!cargando && reservasMes.length > 0" class="table mt-3 animated fadeIn faster animated fadeIn faster">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Razon Social</th>
+                <th scope="col">Fecha Reserva</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Entidad</th>
+                <th scope="col">Estado</th>
+                <th scope="col">Herramientas</th>
+                <!-- <th scope="col">Fecha Registro</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reserva of reservasMes; let i = index">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ reserva.razonSocial}} </td>
+                <td>{{ reserva.fechaReserva}} </td>
+                <td>{{ reserva.telefono }} - {{reserva.celular}} </td>
+                <td>{{ reserva.banco }}</td>
+                <td>
+
+                    <label *ngIf="reserva.estado" class="badge badge-success">Atendido</label>
+                    <label *ngIf="!reserva.estado" class="badge badge-danger">Pendiente</label>
+
+                </td>
+                <td align="center">
+
+                    <button class="btn btn-info mr-1" [routerLink]="['/editar', reserva.reservaYear, reserva.reservaMes, reserva.id ]">
+            <i class="fa fa-pen"></i>
+          </button>
+                    <!-- <button class="btn btn-info mr-1" [routerLink]="['/oficial', oficial.id ]">
+            <i class="fa fa-pen"></i>
+          </button> -->
+
+                    <!-- <button class="btn btn-danger" (click)="borrarReserva( reserva, i ) ">
+            <i class="fa fa-trash"></i>
+            </button> -->
+
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div *ngIf="!cargando && reservasMes.length === 0" class="alert alert-warning text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">No hay registros</h4>
+    <p>
+        <i class="fa fa-exclamation fa-2x"></i>
+    </p>
+</div>
+
+<div *ngIf="cargando" class="alert alert-info text-center mt-3 animated fadeIn faster">
+    <h4 class="alert-heading">Cargando</h4>
+    <p>
+        <i class="fa fa-sync-alt fa-spin fa-2x"></i>
+    </p>
+    <p class="mb-0">
+        Espere por favor
+    </p>
+</div>
+
+<!-- Entidades Modal -->
+<div class="portfolio-modal modal fade" id="EntidadesModal" tabindex="-1" role="dialog" aria-labelledby="EntidadesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">
+      <i class="fas fa-times"></i>
+    </span>
+  </button>
+            <div class="modal-body text-center">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <!-- Portfolio Modal - Title -->
+                            <h4 class="portfolio-modal-title text-secondary text-uppercase mb-0">Filtrar:</h4>
+                            <!-- Icon Divider -->
+                            <div class="divider-custom">
+                                <div class="divider-custom-line"></div>
+                                <div class="divider-custom-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="divider-custom-line"></div>
+                            </div>
+
+
+                            <button (click)="filtrarTodas()" class="btn btn-dark btn-md btn-block" style="margin-bottom: 3px;" href="#" data-dismiss="modal">
+                                <i class="fas fa-check-circle fa-fw"></i>
+                                TODAS
+                                </button>
+
+                            <div *ngFor="let entidad of entidades">
+                                <button (click)="filtrarEntidad( entidad.nombre )" class="btn btn-primary btn-md btn-block" style="margin-bottom: 3px;" href="#" data-dismiss="modal">
+                              <i class="fas fa-check-circle fa-fw"></i>
+                              {{entidad.nombre}}
+                              </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
