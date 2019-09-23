@@ -29,7 +29,7 @@ export class OficialComponent implements OnInit {
 
     this.oficialService.getEntidades()
     .subscribe( resp => {
-      console.log(resp);
+      // console.log(resp);
       this.entidades = resp;
       // this.cargando = false;
     });
@@ -41,7 +41,7 @@ export class OficialComponent implements OnInit {
           .subscribe( (resp: OficialModel) => {
             this.oficial = resp;
             this.oficial.id = id;
-            console.log(resp);
+            // console.log(resp);
           });
     } else {
       const hoy = this.fechaHoy.getDate() + ' / ' + (this.fechaHoy.getMonth() + 1 )
@@ -58,7 +58,7 @@ export class OficialComponent implements OnInit {
   guardar( form: NgForm ) {
 
     if ( form.invalid ) {
-      console.log('Formulario no válido');
+      // console.log('Formulario no válido');
       return;
     }
 

@@ -24,17 +24,17 @@ export class ReservasComponent implements OnInit {
 
   ngOnInit() {
 
-    console.log('reservas');
+    // console.log('reservas');
     this.cargando = true;
     this.oficialesService.getReservas()
         .subscribe( resp => {
-          console.log(resp);
+          // console.log(resp);
           this.reservas = resp;
           this.cargando = false;
           this.reservasMes = this.oficialesService.crearArregloReservasMes(this.reservas[this.fecha.getMonth()]);
           this.reservasMesTodas = this.reservasMes;
           this.obtenerEntidades();
-          console.log(this.reservasMesTodas);
+          // console.log(this.reservasMesTodas);
         });
   }
   mesAnterior() {
@@ -43,13 +43,13 @@ export class ReservasComponent implements OnInit {
     this.cargando = true;
     this.oficialesService.getReservas()
         .subscribe( resp => {
-          console.log(resp);
+          // console.log(resp);
           this.reservas = resp;
           this.cargando = false;
           this.reservasMes = this.oficialesService.crearArregloReservasMes(this.reservas[this.fecha.getMonth()]);
           this.reservasMesTodas = this.reservasMes;
-          console.log(this.reservasMes);
-          console.log( this.fecha.getMonth() );
+          // console.log(this.reservasMes);
+          // console.log( this.fecha.getMonth() );
         });
 
   }
@@ -59,13 +59,13 @@ export class ReservasComponent implements OnInit {
     this.cargando = true;
     this.oficialesService.getReservas()
         .subscribe( resp => {
-          console.log(resp);
+          // console.log(resp);
           this.reservas = resp;
           this.cargando = false;
           this.reservasMes = this.oficialesService.crearArregloReservasMes(this.reservas[this.fecha.getMonth()]);
           this.reservasMesTodas = this.reservasMes;
-          console.log(this.reservasMes);
-          console.log( this.fecha.getMonth() );
+          // console.log(this.reservasMes);
+          // console.log( this.fecha.getMonth() );
         });
 
 
@@ -89,7 +89,7 @@ export class ReservasComponent implements OnInit {
     this.oficialesService.getEntidades()
         .subscribe( resp => {
           this.entidades = resp;
-          console.log(this.entidades);
+          // console.log(this.entidades);
         });
   }
 

@@ -31,9 +31,9 @@ export class EditarPerfilComponent implements OnInit {
     .subscribe( (resp: OficialModel) => {
       this.oficial = resp;
       this.oficial.id = id;
-      console.log(resp);
+      // console.log(resp);
       this.nombreCompleto = this.oficial.nombre + ' ' + this.oficial.apellido;
-      console.log(this.nombreCompleto);
+      // console.log(this.nombreCompleto);
       this.cargando = false;
     });
   }
@@ -41,7 +41,7 @@ export class EditarPerfilComponent implements OnInit {
   guardar( form: NgForm ) {
 
     if ( form.invalid ) {
-      console.log('Formulario no válido');
+      // console.log('Formulario no válido');
       return;
     }
 

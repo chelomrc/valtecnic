@@ -34,11 +34,11 @@ export class ReservasmesComponent implements OnInit {
 
     return this.oficialesService.getReservas()
         .subscribe( resp => {
-          console.log(resp);
+          // console.log(resp);
           this.reservas = resp;
           this.cargando = false;
           this.reservasMes = this.oficialesService.crearArregloReservasMesOficial(this.reservas[this.fecha.getMonth()], this.id);
-          console.log(this.reservasMes);
+          // console.log(this.reservasMes);
         });
 
   }
@@ -64,7 +64,7 @@ export class ReservasmesComponent implements OnInit {
     this.mostrarReserva = true;
     this.reserva = this.reservasMes[i];
 
-    console.log(this.reserva);
+    // console.log(this.reserva);
 
   }
 

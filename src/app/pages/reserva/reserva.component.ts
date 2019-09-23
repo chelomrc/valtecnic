@@ -54,7 +54,7 @@ export class ReservaComponent implements OnInit {
     .subscribe( (resp: OficialModel) => {
       this.oficial = resp;
       this.oficial.id = id;
-      console.log(resp);
+      // console.log(resp);
       // this.nombreCompleto = this.oficial.nombre + ' ' + this.oficial.apellido;
       // console.log(this.nombreCompleto);
       // this.cargando = false;
@@ -67,10 +67,10 @@ export class ReservaComponent implements OnInit {
 
   guardar( form) {
 
-    console.log(form);
+    // console.log(form);
     // controlamos que se introduzca el mapa y el formulario sea valido
     if ( form.invalid || this.reserva.latitud == null  ) {
-      console.log('Formulario no válido');
+      // console.log('Formulario no válido');
       Swal.fire({
         title: 'Error al Enviar',
         text: 'Debe llenar todos los campos del formulario',
@@ -120,8 +120,8 @@ export class ReservaComponent implements OnInit {
     this.reserva.latitud = evento.coords.lat;
     this.reserva.longitud = evento.coords.lng;
 
-    console.log(this.reserva.latitud);
-    console.log(this.reserva.longitud);
+    // console.log(this.reserva.latitud);
+    // console.log(this.reserva.longitud);
 
   }
 

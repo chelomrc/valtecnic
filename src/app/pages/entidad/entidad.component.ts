@@ -28,11 +28,11 @@ export class EntidadComponent implements OnInit {
           .subscribe( (resp: EntidadModel) => {
             this.entidad = resp;
             this.entidad.id = id;
-            console.log(resp);
+            // console.log(resp);
           });
     } else {
 
-      console.log(id);
+      // console.log(id);
     }
 
   }
@@ -40,7 +40,7 @@ export class EntidadComponent implements OnInit {
   guardar( form: NgForm ) {
 
     if ( form.invalid ) {
-      console.log('Formulario no válido');
+      // console.log('Formulario no válido');
       return;
     }
     Swal.fire({
@@ -57,13 +57,13 @@ export class EntidadComponent implements OnInit {
       peticion = this.oficialService.crearEntidad( this.entidad );
     }
     peticion.subscribe( resp => {
-      console.log(resp);
+      // console.log(resp);
       Swal.fire({
         title: this.entidad.nombre,
         text: 'Se actualizó correctamente',
         type: 'success'
       });
     });
-    console.log(this.entidad);
+    // console.log(this.entidad);
   }
 }

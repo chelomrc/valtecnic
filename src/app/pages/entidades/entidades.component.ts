@@ -27,7 +27,7 @@ export class EntidadesComponent implements OnInit {
 
   borrarEntidad( i: number) {
 
-    console.log(this.entidades[i]);
+    // console.log(this.entidades[i]);
   }
 
 }

@@ -50,7 +50,7 @@ export class AdminComponent implements OnInit {
       this.cargando = true;
       this.oficialesService.getAdmins()
           .subscribe( resp => {
-              console.log(resp);
+              // console.log(resp);
               Swal.close();
               this.admins = resp;
               this.verificarUsuario();
@@ -80,7 +80,7 @@ export class AdminComponent implements OnInit {
 
          this.guardarToken();
          this.guardarID(admin.id);
-         console.log('login correcto');
+        //  console.log('login correcto');
          this.router.navigate(['/panel']);
          return;
 
@@ -114,7 +114,7 @@ export class AdminComponent implements OnInit {
     // Verificar si presionó enter
   enter( e: any ) {
     if ( e.key === 'Enter' ) { this.login(); }
-    console.log(e);
+    // console.log(e);
   }
 
 }

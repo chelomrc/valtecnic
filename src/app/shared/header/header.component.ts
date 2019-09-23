@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.logueado = this.oficialesService.verificarToken();
     this.logueado = this.oficialesService.logueado;
-    console.log('logueado:', this.logueado);
+    // console.log('logueado:', this.logueado);
   }
 
   logout() {

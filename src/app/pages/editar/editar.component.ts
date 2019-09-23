@@ -28,7 +28,7 @@ export class EditarComponent implements OnInit {
         .subscribe( (resp: ReservaModel) => {
           this.reserva = resp;
           this.reserva.id = id;
-          console.log(this.reserva);
+          // console.log(this.reserva);
         });
   }
 

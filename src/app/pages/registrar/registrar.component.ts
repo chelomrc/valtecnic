@@ -32,7 +32,7 @@ export class RegistrarComponent implements OnInit {
   }
 
   misReservas() {
-    console.log(this.oficial.id);
+    // console.log(this.oficial.id);
     this.router.navigate(['/reservas', this.oficial.id]);
   }
 

@@ -22,12 +22,12 @@ export class OficialesComponent implements OnInit {
     this.cargando = true;
     this.oficialesService.getOficiales()
         .subscribe( resp => {
-          console.log(resp);
+          // console.log(resp);
           this.oficiales = resp;
           this.cargando = false;
         });
 
-        console.log(this.oficiales);
+        // console.log(this.oficiales);
 
   }
 
