@@ -1,12 +1,4 @@
-# HeroesApp
+# ValtecnicApp
 
-Repositorio del proyecto de CRUD en mi curso de Angular de cero a experto
+Proyecto serverless con geoposicionamiento global, gestion de agenda, citas con estados y usuarios gestion de usuarios.
 
-https://www.udemy.com/angular-2-fernando-herrera/?couponCode=ANGULAR-10
-
-
-## Nota
-
-Si quieres saber más sobre mis cursos, ingresa a mi sitio web
-
-https://fernando-herrera.com
